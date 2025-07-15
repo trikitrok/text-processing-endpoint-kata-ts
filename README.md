@@ -22,12 +22,12 @@
 
 For instance, once all functionality is done, if the endpoint receives a request like:
 
-GET "www.textitos.es/v1/analysis?text=pipa+hello+world+world+hello+koko+pepe+chacha+pipa+pipa+chacha&excludedWords=pepe,koko&freqAbove=1&wordsListed=3"
+`curl "http://localhost:3000/v1/analysis?text=pipa+hello+world+world+hello+koko+pepe+chacha+pipa+pipa+chacha&excludedWords=pepe,koko&freqAbove=1&wordsListed=3"`
 
-that corresponds to the `Input`
+it corresponds to the `Input`
 `{text: "pipa hello world world hello koko pepe chacha pipa pipa chacha", options = {minFreq: 2, max: 3, noShow: ["pepe", "koko"]}}`,
 
-it will produce the following JSON response:
+and it will produce the following JSON response:
 
 `{"analysis":{"countedWords": 11, "wordsWithFrequency": [{"word": "pipa", "frequency": 3}, {"word": "hello","frequency": 2}, {"word": "world", "frequency": 2}]}}`
 
