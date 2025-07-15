@@ -5,53 +5,53 @@ export function anAnalysisResult(): AnalysisResultBuilder {
     return new AnalysisResultBuilder([], 0);
 }
 
-export function word(text: string = ""): RankedWordBuilder {
-    return new RankedWordBuilder(text, 0);
+export function word(text: string = ""): WordWithFrequencyBuilder {
+    return new WordWithFrequencyBuilder(text, 0);
 }
 
-export function wordsWithFrequency(...rankedWordBuilders: RankedWordBuilder[]): WordWithFrequency[] {
-    return rankedWordBuilders.map(builder => builder.build());
+export function wordsWithFrequency(...wordWithFrequencyBuilders: WordWithFrequencyBuilder[]): WordWithFrequency[] {
+    return wordWithFrequencyBuilders.map(builder => builder.build());
 }
 
 class AnalysisResultBuilder {
     private countedWords: number;
-    private readonly rankedWords: Array<WordWithFrequency>;
+    private readonly wordsWithFrequency: Array<WordWithFrequency>;
 
-    public constructor(rankedWords: Array<WordWithFrequency>, countedWords: number) {
-        this.rankedWords = rankedWords;
+    constructor(wordsWithFrequency: Array<WordWithFrequency>, countedWords: number) {
+        this.wordsWithFrequency = wordsWithFrequency;
         this.countedWords = countedWords;
     }
 
-    public ofTextWithLength(countedWords: number): AnalysisResultBuilder {
+    ofTextWithLength(countedWords: number): AnalysisResultBuilder {
         this.countedWords = countedWords;
         return this;
     }
 
-    public add(aRankedWordBuilder: RankedWordBuilder): AnalysisResultBuilder {
-        this.rankedWords.push(aRankedWordBuilder.build());
+    add(wordWithFrequencyBuilder: WordWithFrequencyBuilder): AnalysisResultBuilder {
+        this.wordsWithFrequency.push(wordWithFrequencyBuilder.build());
         return this;
     }
 
-    public build(): AnalysisResult {
-        return new AnalysisResult(this.rankedWords, this.countedWords);
+    build(): AnalysisResult {
+        return new AnalysisResult(this.wordsWithFrequency, this.countedWords);
     }
 }
 
-class RankedWordBuilder {
+class WordWithFrequencyBuilder {
     private readonly word: string = "";
     private frequency: number = 0;
 
-    public constructor(word: string, frequency: number) {
+    constructor(word: string, frequency: number) {
         this.word = word;
         this.frequency = frequency;
     }
 
-    public withFrequency(frequency: number): RankedWordBuilder {
+    withFrequency(frequency: number): WordWithFrequencyBuilder {
         this.frequency = frequency;
         return this;
     }
 
-    public build(): WordWithFrequency {
+    build(): WordWithFrequency {
         return new WordWithFrequency(this.word, this.frequency);
     }
 }
