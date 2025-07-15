@@ -2,7 +2,8 @@
 
 ## Iterations:
 
-1. Indicate that the analysis is case-insensitive (it's case-sensitive by default). Use the `caseInsensitive` parameter (hint
+1. Indicate that the analysis is case-insensitive (it's case-sensitive by default). Use the `caseInsensitive`
+   parameter (hint
    use `caseInsensitive=false`).
 
 2. Don't show some words using the `excludedWords` parameter (hint use
@@ -15,10 +16,10 @@
 
 ## Testing the endpoint manually.
 
-   To run the server: `ts-node src/api/server.ts`
+To run the server: `ts-node src/api/server.ts`
 
-   To manually test de endpoint:
-   `curl "http://localhost:3000/v1/analysis?text=pipa+hello+world+world+hello+koko+pepe+chacha+pipa+pipa+chacha&excludedWords=pepe,koko&freqAbove=1&wordsListed=3"`
+To manually test de endpoint:
+`curl "http://localhost:3000/v1/analysis?text=pipa+hello+world+world+hello+koko+pepe+chacha+pipa+pipa+chacha&excludedWords=pepe,koko&freqAbove=1&wordsListed=3"`
 
 ## To know we are done.
 
@@ -27,7 +28,7 @@ Once all functionality is done, if, for instance, the endpoint receives a reques
 `curl "http://localhost:3000/v1/analysis?text=pipa+hello+world+world+hello+koko+pepe+chacha+pipa+pipa+chacha&excludedWords=pepe,koko&freqAbove=1&wordsListed=3"`
 
 it will correspond to the `Input`
-`{text: "pipa hello world world hello koko pepe chacha pipa pipa chacha", options = {minFreq: 2, max: 3, noShow: ["pepe", "koko"]}}`,
+`{text: "pipa hello world world hello koko pepe chacha pipa pipa chacha", options: {minFreq: 2, max: 3, noShow: ["pepe", "koko"]}}`,
 
 and it will produce the following JSON response:
 
