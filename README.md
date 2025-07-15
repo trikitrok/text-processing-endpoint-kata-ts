@@ -11,7 +11,7 @@
 3. Don't show infrequent words. Indicate the minimum frequency to show using the `freqAbove` parameter (hint use
    `freqAbove=3`).
 
-4. Indicate the maximum number of words to show. Use the `wordsListed` parameter  (hint use `wordsListed=2`).
+4. Indicate the maximum number of words to show. Use the `wordsListed` parameter (hint use `wordsListed=2`).
 
 ## Testing the endpoint manually.
 
@@ -20,11 +20,13 @@
    To manually test de endpoint:
    `curl "http://localhost:3000/v1/analysis?text=pipa+hello+world+world+hello+koko+pepe+chacha+pipa+pipa+chacha&excludedWords=pepe,koko&freqAbove=1&wordsListed=3"`
 
-For instance, once all functionality is done, if the endpoint receives a request like:
+## To know we are done.
+
+Once all functionality is done, if, for instance, the endpoint receives a request like:
 
 `curl "http://localhost:3000/v1/analysis?text=pipa+hello+world+world+hello+koko+pepe+chacha+pipa+pipa+chacha&excludedWords=pepe,koko&freqAbove=1&wordsListed=3"`
 
-it corresponds to the `Input`
+it will correspond to the `Input`
 `{text: "pipa hello world world hello koko pepe chacha pipa pipa chacha", options = {minFreq: 2, max: 3, noShow: ["pepe", "koko"]}}`,
 
 and it will produce the following JSON response:
